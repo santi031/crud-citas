@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "web-dates": {
+      "hosting": {
+        "reto_tecnico": [
+          "web-dates"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "web-dates"
+  }
+}

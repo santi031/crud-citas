@@ -1,0 +1,38 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Color</th>
+        <th scope="col">Duración</th>
+        <th scope="col">¿Está activa?</th>
+        <th scope="col">Fecha de creación</th>
+        <th scope="col">Fecha de actualización</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of appointments; let i = index">
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td [ngStyle]="{ 'background-color': item.color }"></td>
+        <td>{{ item.duration }}</td>
+        <td>{{ item.active }}</td>
+        <td>{{ item.creationDate }}</td>
+        <td>{{ item.updateDate }}</td>
+        <td>
+          <div class="group-buttons col-6 order-last">
+            <button class="btn btn-primary" (click)="editAppointment(i)">Editar</button>
+            <button class="btn btn-danger" (click)="deleteItem(i)">
+              Borrar
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr></tr>
+    </tbody>
+  </table>
+</div>
+
+<app-modal *ngIf="isModal" [title]="'Eliminar'" [description]="'¿Está seguro de eliminar este elemento?'" ($closeModal)="closeModal($event)" ($isDelete)="isDelete($event)" [id]="id" ></app-modal>

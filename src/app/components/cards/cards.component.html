@@ -1,0 +1,23 @@
+<div *ngIf="isForm" class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ description }}</h6>
+    <app-forms></app-forms>
+  </div>
+</div>
+
+<div *ngIf="isTable" class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-8">
+        <h5 class="card-title">{{ title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ description }}</h6>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-success" (click)="goToAppointment()">Agregar tipo de cita</button>
+      </div>
+    </div>
+
+    <app-tables></app-tables>
+  </div>
+</div>

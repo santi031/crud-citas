@@ -1,0 +1,48 @@
+<form action="">
+  <div class="container">
+    <div class="row">
+      <div class="container-input col-4">
+        <label for="name">Nombre <span *ngIf="!id">*</span></label>
+        <input [(ngModel)]="selectedAppointment.name" [ngModelOptions]="{standalone: true}" id="name" type="text" placeholder="Nombre" required />
+      </div>
+      <div class="container-input col-4">
+        <label for="description">Descripción</label>
+        <input [(ngModel)]="selectedAppointment.description" [ngModelOptions]="{standalone: true}" id="description" type="text" placeholder="Descripción" />
+      </div>
+      <div class="container-input col-4">
+        <label for="color">Color <span *ngIf="!id">*</span></label>
+        <input
+          aria-disabled="true"
+          class="form-control"
+          [(colorPicker)]="color"
+          [cpPosition]="'bottom'"
+          [style.background]="color"
+          [cpOutputFormat]="'hex'"
+          [value]="color"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="container-input col-4">
+        <label for="duration">Duración (en minutos)</label>
+        <input [(ngModel)]="selectedAppointment.duration" [ngModelOptions]="{standalone: true}" id="duration" type="number" placeholder="Duración" />
+      </div>
+      <div class="container-input col-4">
+        <label for="">¿Está activa? <span *ngIf="!id">*</span> </label>
+        <select [(ngModel)]="optionSelected" [ngModelOptions]="{standalone: true}" (change)="catchValue()">
+          <option  *ngFor="let option of options" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-4 group-buttons">
+          <button class="btn btn-primary" (click)="insertAppointment()">Aceptar</button>
+          <button class="btn btn-danger" (click)="backToHome()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<app-modal *ngIf="isModal" [title]="'Complete los campos'" [isWarning]="true" [description]="'Por favor llene los datos requeridos'" ($closeModal)="closeModal($event)"></app-modal>
