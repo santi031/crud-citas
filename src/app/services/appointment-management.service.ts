@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { IAppointment } from '../interfaces/iAppointment';
 import { Router } from '@angular/router';
 import {
-  addDoc,
   collection,
   doc,
   setDoc,
@@ -10,8 +9,6 @@ import {
   getFirestore,
   Firestore,
   deleteDoc,
-  onSnapshot,
-  query, where
 } from '@angular/fire/firestore';
 import { getDoc } from '@firebase/firestore';
 
@@ -42,14 +39,8 @@ export class AppointmentManagementService {
 
     this.router.navigate(['/home']);
   }
-  // public updateAppointment() {
-  //   this.appointments.push();
-  // }
 
   public async editDoc(id: string) {
-    // let dates = collection(this.db, "dates");
-    // let q = query(dates, where("id", "==", id));
-    // return q;
     let docSnap;
     if (id !== null) {
       docSnap = await getDoc(doc(this.db, 'dates', id));

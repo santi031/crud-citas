@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IAppointment } from 'src/app/interfaces/iAppointment';
-import { Appointment } from 'src/app/models/appointment';
 import { AppointmentManagementService } from 'src/app/services/appointment-management.service';
 import moment from 'moment';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tables',
